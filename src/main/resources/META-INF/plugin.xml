@@ -1,0 +1,20 @@
+<idea-plugin>
+    <id>com.xais.agent-assistant</id>
+    <name>Agent Assistant</name>
+    <vendor>XAIS</vendor>
+
+    <description><![CDATA[
+        <p>Agent Assistant is an extensible JetBrains IDE plugin shell for AI coding agents.</p>
+        <p>The plugin separates the IDE UI from concrete agent runtimes through an AgentRuntime adapter layer.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Agent Assistant"
+                    anchor="right"
+                    factoryClass="com.xais.agentassistant.plugin.AgentAssistantToolWindowFactory"
+                    canCloseContents="true"/>
+    </extensions>
+</idea-plugin>
+
