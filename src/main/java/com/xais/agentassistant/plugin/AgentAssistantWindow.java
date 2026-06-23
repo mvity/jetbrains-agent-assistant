@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
+import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.ui.jcef.JBCefJSQuery;
 import com.xais.agentassistant.agent.adapters.claude.ClaudeRuntime;
@@ -56,7 +57,7 @@ public final class AgentAssistantWindow {
     }
 
     private void createContent() {
-        if (!JBCefBrowser.isSupported()) {
+        if (!JBCefApp.isSupported()) {
             root.add(new JLabel("JCEF is not supported in this IDE runtime."), BorderLayout.CENTER);
             return;
         }
