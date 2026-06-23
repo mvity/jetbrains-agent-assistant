@@ -61,10 +61,7 @@ public abstract class AbstractCliRuntime implements AgentRuntime {
     public AgentHealth health(AgentRuntimeConfig config) {
         String command = commandFrom(config);
         Optional<Path> executable = executableResolver.resolve(command);
-        if (executable.isEmpty()) {
-            return AgentHealth.unhealthy(displayName() + " executable not found: " + command);
-        }
-        return AgentHealth.healthy(displayName() + " executable found: " + executable.get());
+        return executable.map(path -> AgentHealth.healthy(displayName() + " executable found: " + path)).orElseGet(() -> AgentHealth.unhealthy(displayName() + " executable not found: " + command));
     }
 
     @Override
